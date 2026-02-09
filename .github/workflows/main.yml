@@ -19,20 +19,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Setup Node.js (optional, good practice)
+      # Step 2: Configure GitHub Pages (🔥 REQUIRED)
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      # Step 3: Setup Node.js (optional, but fine)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "18"
 
-      # Step 3: Validate HTML (optional but impressive)
-      - name: Install HTML Validator
-        run: npm install -g html-validator-cli
-
-      - name: Validate HTML files
-        run: html-validator --file=index.html --verbose || true
-
-      # Step 4: Upload files for GitHub Pages
+      # Step 4: Upload site files
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
